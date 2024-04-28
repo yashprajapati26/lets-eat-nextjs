@@ -1,4 +1,4 @@
-import products from "@/public/data/products";
+import { products } from "../../../../../public/data";
 
 export async function GET(req) {
   const abc = req.nextUrl.pathname.split("/");

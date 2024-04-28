@@ -5,20 +5,20 @@ import React, { useEffect, useState } from "react";
 function page() {
   const [products, setProducts] = useState([]);
 
-  // const loadposts = () => {
-  //   const f = async () => {
-  //     const response = await fetch("http://localhost:3000/api/products");
-  //     const data = await response.json();
-  //     console.log("===>", data);
-  //     setProducts(data);
-  //   };
-  //   f();
-  // };
+  const loadposts = () => {
+    const f = async () => {
+      const response = await fetch("http://localhost:3000/api/products");
+      const data = await response.json();
+      console.log("===>", data);
+      setProducts(data);
+    };
+    f();
+  };
 
-  // useEffect(() => {
-  //   console.log("called loadPosts:");
-  //   loadposts();
-  // }, []);
+  useEffect(() => {
+    console.log("called loadPosts:");
+    loadposts();
+  }, []);
 
   return (
     <div>

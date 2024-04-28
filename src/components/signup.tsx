@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { registerAction } from "../../api/actions/auth-actions";
+import { registerAction } from "../app/api/actions/auth-actions";
 import { useFormState } from "react-dom";
 
 const INITIAL_STATE = {
