@@ -1,4 +1,4 @@
-import data from "../../../../public/data";
+import { data } from "../../../../public/data";
 
 export async function GET(req) {
   console.log("----------------GET", JSON.stringify(data));

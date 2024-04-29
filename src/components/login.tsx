@@ -1,9 +1,38 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
 function LoginForm() {
   const router = useRouter();
+
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [message, setMessage] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      setMessage(data.message);
+      if (response.ok) {
+        // Redirect or perform any action upon successful login
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setMessage("An error occurred while logging in.");
+    }
+  };
 
   // const loginHandler = () => {
   //   router.replace("/");
@@ -23,7 +52,12 @@ function LoginForm() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form
+            className="space-y-6"
+            action="#"
+            method="POST"
+            onSubmit={handleSubmit}
+          >
             <div>
               <label
                 htmlFor="email"
@@ -33,11 +67,13 @@ function LoginForm() {
               </label>
               <div className="mt-2">
                 <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
+                  id="username"
+                  name="username"
+                  type="username"
+                  autoComplete="username"
                   required
+                  value={formData.username}
+                  onChange={handleChange}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -67,6 +103,8 @@ function LoginForm() {
                   type="password"
                   autoComplete="current-password"
                   required
+                  value={formData.password}
+                  onChange={handleChange}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -92,6 +130,7 @@ function LoginForm() {
               Sign up
             </a>
           </p>
+          {message && <p>{message}</p>}
         </div>
       </div>
     </div>
