@@ -1,5 +1,6 @@
 "use server";
 import { z } from "zod";
+import { users } from "../../../../public/users";
 
 const schemaRegister = z.object({
   firstname: z.string().min(3).max(20, {
@@ -8,28 +9,40 @@ const schemaRegister = z.object({
   email: z.string().email({
     message: "Please enter a valid email address",
   }),
-  password: z.string().min(6).max(100, {
+  password: z.string().min(4).max(100, {
     message: "Password must be between 6 and 100 characters",
   }),
 });
 
 export async function registerAction(prevState: any, formData: FormData) {
-  console.log("registerAction called");
+  console.log("registerAction called",formData);
 
   const signUpData = {
     firstname: formData.get("firstname"),
     email: formData.get("email"),
     password: formData.get("password"),
-    cpassword: formData.get("cpassword"),
+
   };
 
   try {
-    schemaRegister.parse(formData);
+    schemaRegister.parse(signUpData);
     // Form data is valid, submit or do further processing
     console.log("Form data is valid:", formData);
-    if (signUpData.password === signUpData.cpassword) {
-      console.log("Passwords match");
+    if (signUpData.password === formData.get("cpassword")) {
+      const lastdata = users[users.length - 1]
+      const data = {
+        id : lastdata.id+1,
+        name : signUpData.firstname,
+        email : signUpData.email,
+        password : signUpData.password
+      }
+      users.push(data)
+      console.log("Passwords match", users);
     }
+    return {
+      ...prevState,
+      data: signUpData,
+    };
   } catch (error) {
     if (error instanceof z.ZodError) {
       // Zod validation error occurred

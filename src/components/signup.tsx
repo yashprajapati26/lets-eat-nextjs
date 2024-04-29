@@ -11,6 +11,8 @@ function SignUpForm() {
   const [formState, formAction] = useFormState(registerAction, INITIAL_STATE);
 
   console.log("formState", formState);
+  
+
 
   return (
     <div className="">
