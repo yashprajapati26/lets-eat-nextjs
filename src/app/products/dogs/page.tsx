@@ -1,9 +1,16 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-
+import { useRouter } from "next/navigation";
+// import { useRouter } from "next/router";
 function page() {
   const [products, setProducts] = useState([]);
+  const router = useRouter();
+
+  const detailHandler = (productId: any) => {
+    const newUrl = `/products/dogs/${productId}`;
+    router.push(newUrl);
+  };
 
   const loadposts = () => {
     const f = async () => {
@@ -53,8 +60,11 @@ function page() {
                       <span className="text-gray-900 font-medium">$99.99</span>
                     </div>
                     <div className="mt-4">
-                      <button className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
-                        Add to Cart
+                      <button
+                        onClick={() => detailHandler(product?.id)}
+                        className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+                      >
+                        View Details
                       </button>
                     </div>
                   </div>
