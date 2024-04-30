@@ -1,3 +1,4 @@
+import { ProductDetails } from "@/components/productDetails";
 import React from "react";
 
 async function fetchProductDetail(productId: string) {
@@ -16,13 +17,17 @@ async function fetchProductDetail(productId: string) {
 export default async function ProductDetail({ params }) {
   const { productId } = params;
   console.log("==========>>>>>>>>params", params);
-  const data = await fetchProductDetail(productId);
+  const productData = await fetchProductDetail(productId);
 
-  console.log("Rendering Server Side Products: ", data);
+  console.log("Rendering Server Side Products: ", productData);
   return (
-    <div>
-      <h1 className="text-2xl p-5 bg-sky-300"> Product Detail </h1>
-      <div className="mx-5 flex flex-wrap">loading...</div>
+    <div className="min-h-screen">
+      <h1 className="text-2xl p-5 bg-green-400 px-16"> Product Detail </h1>
+      {productData ? (
+        <ProductDetails productData={productData} />
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 }
