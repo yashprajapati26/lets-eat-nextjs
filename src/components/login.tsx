@@ -24,9 +24,13 @@ function LoginForm() {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      setMessage(data.message);
-      if (response.ok) {
+      if (data.status === 200) {
+        localStorage.setItem("isLogin", "true");
+        setMessage(data.message);
+        router.replace("/");
         // Redirect or perform any action upon successful login
+      } else {
+        setMessage(data.message);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -34,9 +38,6 @@ function LoginForm() {
     }
   };
 
-  // const loginHandler = () => {
-  //   router.replace("/");
-  // };
   return (
     <div className="h-screen">
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -49,6 +50,7 @@ function LoginForm() {
           <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign in to your account
           </h2>
+          {message && <p className="text-center text-red-500">{message}</p>}
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -130,7 +132,6 @@ function LoginForm() {
               Sign up
             </a>
           </p>
-          {message && <p>{message}</p>}
         </div>
       </div>
     </div>

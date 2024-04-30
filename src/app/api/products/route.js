@@ -1,7 +1,7 @@
 import { data } from "../../../../public/data";
 
 export async function GET(req) {
-  console.log("----------------GET", JSON.stringify(data));
+  // console.log("----------------GET", JSON.stringify(data));
   return new Response(JSON.stringify(data));
 }
 

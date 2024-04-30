@@ -15,7 +15,7 @@ export async function POST(req) {
     return new Response(
       JSON.stringify({
         status: 400,
-        message: "Not login, Credential wrong.",
+        message: "Something went wrong, please try again later",
       })
     );
   }

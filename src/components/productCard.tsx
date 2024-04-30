@@ -1,16 +1,21 @@
-import React from 'react'
+"use client";
+
+import React from "react";
 import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+export const ProductCard = ({ products }) => {
+  const router = useRouter();
+  const pathname = usePathname();
 
-export const ProductCard = ({products}) => {
-    const router = useRouter();
+  const detailHandler = (productId: any) => {
+    console.log("click on detail page", productId, pathname);
+    const newUrl = `${pathname}/${productId}`;
+    router.push(newUrl);
+  };
 
-    const detailHandler = (productId: any) => {
-      const newUrl = `/products/dogs/${productId}`;
-      router.push(newUrl);
-    };
   return (
     <div>
-        <div className="mx-5 flex flex-wrap">
+      <div className="mx-5 flex flex-wrap">
         {products && products?.length > 0 ? (
           products.map((product) => {
             return (
@@ -56,5 +61,5 @@ export const ProductCard = ({products}) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};

@@ -1,7 +1,22 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function Header() {
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("isLogin")) {
+      setIsLogin(true);
+    }
+  }, []);
+
+  const logoutHandler = () => {
+    localStorage.removeItem("isLogin");
+    setIsLogin(false);
+  };
+
   return (
     <div className="bg-blue-500 py-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -25,16 +40,31 @@ function Header() {
                 Contact
               </a>
             </li>
-            <li>
-              <a href="/login" className="text-white hover:text-gray-300">
-                Login
-              </a>
-            </li>
-            <li>
-              <a href="/signup" className="text-white hover:text-gray-300">
-                Sign up
-              </a>
-            </li>
+            {isLogin ? (
+              <>
+                <li>
+                  <a
+                    onClick={() => logoutHandler()}
+                    className="text-white hover:text-gray-300 bg-red-500 px-3 py-2 rounded-lg"
+                  >
+                    logout
+                  </a>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <a href="/login" className="text-white hover:text-gray-300">
+                    Login
+                  </a>
+                </li>
+                <li>
+                  <a href="/signup" className="text-white hover:text-gray-300">
+                    Sign up
+                  </a>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </div>
