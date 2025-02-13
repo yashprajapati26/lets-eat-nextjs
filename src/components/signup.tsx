@@ -2,6 +2,10 @@
 import React from "react";
 import { registerAction } from "../app/api/actions/auth-actions";
 import { useFormState } from "react-dom";
+import { addUser } from "../app/redux/slice"
+import { useDispatch } from "react-redux";
+
+
 
 const INITIAL_STATE = {
   data: "Hello people, How are you",
@@ -9,10 +13,13 @@ const INITIAL_STATE = {
 
 function SignUpForm() {
   const [formState, formAction] = useFormState(registerAction, INITIAL_STATE);
-
+  const dispatch = useDispatch();
   console.log("formState", formState);
-  
 
+  const userDispatch = () => {
+    console.log(formState)
+    dispatch(addUser())
+  }
 
   return (
     <div className="">
@@ -109,6 +116,7 @@ function SignUpForm() {
             </div>
             <div>
               <button
+                onClick={userDispatch}
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
