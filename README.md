@@ -1,3 +1,246 @@
+The Complete Morden Javascript Course with ES6
+==============================================
+
+
+Introduction
+
+Variables & Data Type
+
+Rules
+
+Numbers - Arithmetic Operations
+
+Numbers - More Operator / Special Numbers
+
+Strings
+
+Booleans – Logical Operators, Operator Precedence, Ternary Operator
+
+Booleans vs Non Booleans
+
+null and undefined
+
+Arrays
+
+Conditional and Looping
+
+If Statments
+
+Switch Statement
+
+For statement
+
+while do statments
+
+Functions(Basic & Intermediate)
+
+Introduction
+
+Return values
+
+Statement vs Expression
+
+Built-in JS Functions
+
+Objects
+
+Object literals
+
+‘Dot notation’ vs ‘Brackets’
+
+Prototype
+
+Equality
+
+String Object and Methods
+
+Data Object
+
+Math Object and Methods
+
+JSON
+
+Array Object
+
+Array methods : filtering, slicing
+
+Loop through Arrays using forEach
+
+The DOM
+
+Learn HTML& CSS
+
+Understand the DOM
+
+Access DOM elements
+
+Change DOM elements
+
+Remove DOM elements
+
+Event Handling
+
+event object (keys, mouse event, scroll event, focus, preventDefault)
+
+Single Threaded Javascipt
+
+Debouncing
+
+Event Propagation
+
+Event Delegation
+
+JQurey
+
+Execution Context – Hoisting – ‘this’
+
+Gloval Execution Context – ‘this
+
+Execution Context - Creation & Hoisting
+
+Execution Context – Execution
+
+Function declaration overriding variable declaration
+
+Closures
+
+Understand Closures
+
+Update values of outer variables
+
+Closures with event loops
+
+Objects (Advanced): Encapsulations & Information Hiding
+
+Why would you hide information?
+
+Use closures to hide properties and methods
+
+Use IIFE to create private static properties and methods
+
+Objects (Advanced) : Inheritance & Prototype Chain
+
+Understand the prototype
+
+Inheritance&PrototypeChain: __proto__
+
+Inheritance&PrototypeChain: Object.create
+
+Inheritance&PrototypeChain: Constructor Inheritance
+
+Inheritance&PrototypeChain: extend function
+
+Class Augmentation
+
+Object cloning
+
+Objects (Advanced) : Objects Challenges
+
+Challenge : Iteration and hasOwnProperty
+
+Challenge : Iteration using object.keys & forEach
+
+Challenge : getPrototypeOf & getOwnPropertyNames
+
+Challenge : Climb up the prototype chain
+
+Objects (Advanced) : Singleton & Module Patterns
+
+Namespacing
+
+Singleton Pattern
+
+Wrap page specific code
+
+Modular Design Pattern
+
+Function (Advanced)
+
+The ‘arguments’ property
+
+Function.prototype.call
+
+Function.prototype.apply
+
+Function.prototype.bind
+
+ES6 – ES2015 : Introduction
+
+Introduction
+
+ES6 : Variables & Scoping
+
+‘let’ scope and temporal dead zone
+
+Block scoping in ES6
+
+Functions and Block scoping
+
+Functions and Block scoping – Use ‘let’
+
+‘let’ Scope vs Closures
+
+‘const’ – Read only variables
+
+ES6 : Modern Features which will make your coding Experience Easier!
+
+Template Literals
+
+Arrow Functions – ‘this’ Lexical Scope
+
+Destructuring – Array
+
+Destructuring – Objects
+
+Destructuring – Functions
+
+Functions – Default Parameter Values
+
+Functions – Rest Parameters
+
+Spread Oprator
+
+Object Literals New Features
+
+ES6 – New Data Structures & Iteration
+
+for of Loop
+
+Iterators, Generators & next()
+
+Maps – Iteration
+
+Sets – Iteration
+
+Sets -Challenges: Intersection * Difference
+
+Symbols
+
+Symbol.iterator
+
+ES6 – Modern Array Methods
+
+Array.from: collections, strings & arguments
+
+Array.from: optional map, length property, Maps & Sets
+
+Array.of()
+
+ES6 – Classes
+
+ES6 Classes Syntax
+
+Static Methods
+
+Getter & Setters
+
+Class Inherritance – extends - super()
+
+
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
