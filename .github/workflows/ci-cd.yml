@@ -1,0 +1,47 @@
+name: CI/CD Pipeline for Next.js
+
+on:
+  push:
+    branches:
+      - master  # Trigger when changes are pushed to the master branch
+  
+jobs:
+  install:
+    runs-on: ubuntu-latest  # The job will run on the latest Ubuntu runner
+
+    steps:
+      - name: Check out code from repository
+        uses: actions/checkout@v3  # This action checks out the code from the repository
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Specify the Node.js version
+
+      - name: Install dependencies
+        run: npm install  # Installs the project dependencies
+
+      - name: Build the Next.js application
+        run: npm run build  # Builds the Next.js app
+
+  # deploy:
+  #   runs-on: ubuntu-latest  # This job will also run on the latest Ubuntu runner
+  #   needs: install  # This job depends on the "install" job, meaning it will only run if "install" is successful
+
+  #   steps:
+  #     - name: Check out code from repository
+  #       uses: actions/checkout@v3  # This action checks out the code from the repository
+
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '16'  # Specify the Node.js version
+
+  #     - name: Install dependencies
+  #       run: npm install  # Installs the project dependencies again in the deploy job
+
+  #     - name: Deploy to Vercel (or another platform)
+  #       run: |
+  #         npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }}  # Deploy to Vercel using a secure token
+  #       env:
+  #         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Use your Vercel token from GitHub Secrets for authentication
